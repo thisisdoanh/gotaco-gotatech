@@ -150,21 +150,27 @@ class HomeScreen extends GetView<HomeController> {
                 ),
               ),
               Gap(15.sp),
-              Obx(
-                () => Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    buildInfoEmission(
-                        imgPath: AppImage.imgCO,
-                        value: "${controller.percentCO.value}% CO"),
-                    buildInfoEmission(
-                        imgPath: AppImage.imgTemperature,
-                        value: "${controller.temperature.value}℃"),
-                    buildInfoEmission(
-                        imgPath: AppImage.imgHumidity,
-                        value: "${controller.humidity.value}℃"),
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  // buildInfoEmission(
+                  //     imgPath: AppImage.imgCO,
+                  //     value: "${controller.percentCO.value}% CO"),
+                  Obx(
+                    () => buildInfoEmission(
+                      imgPath: AppImage.imgTemperature,
+                      value:
+                          "${(double.tryParse((controller.appController.data.value.temperature?.results.last.series.last.values.last.last ?? 0).toString()) ?? 0).toStringAsFixed(1)}℃",
+                    ),
+                  ),
+                  Obx(
+                    () => buildInfoEmission(
+                      imgPath: AppImage.imgHumidity,
+                      value:
+                          "${(double.tryParse((controller.appController.data.value.humidity?.results.last.series.last.values.last.last ?? 0).toString()) ?? 0).toStringAsFixed(1)}℃",
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -176,11 +182,13 @@ class HomeScreen extends GetView<HomeController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppLineChart(
-                    dataList: listValue,
-                    maxY: 100,
-                    backgroundColor: AppColor.primaryColor,
-                    type: "%",
+                  Obx(
+                    () => AppLineChart(
+                      dataList: controller.listDataCO.value,
+                      maxY: 100,
+                      backgroundColor: AppColor.primaryColor,
+                      type: "%",
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15.sp),

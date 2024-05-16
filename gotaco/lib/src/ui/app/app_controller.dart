@@ -1,24 +1,32 @@
 import 'package:get/get.dart';
+import 'package:gotaco/src/data/model/iot_model.dart';
+import 'package:gotaco/src/util/app_log.dart';
 
-class AppController extends SuperController{
-  @override
-  void onDetached() {
+class AppController extends SuperController {
+  Rx<IotModel> data = IotModel(
+    humidity: null,
+    temperature: null,
+    rsR0: null,
+  ).obs;
+
+  onPressSeeDetail() {
+    AppLog.info(data);
+    AppLog.info(data);
+    AppLog.info(data);
   }
 
   @override
-  void onHidden() {
-  }
+  void onDetached() {}
 
   @override
-  void onInactive() {
-  }
+  void onHidden() {}
 
   @override
-  void onPaused() {
-  }
+  void onInactive() {}
 
   @override
-  void onResumed() {
-  }
+  void onPaused() {}
 
+  @override
+  void onResumed() {}
 }

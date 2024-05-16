@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+ import 'package:get/get.dart';
 import 'package:gotaco/src/ui/screen/home/home_binding.dart';
 import 'package:gotaco/src/ui/screen/home/home_screen.dart';
 import 'package:gotaco/src/ui/screen/splash/splash_binding.dart';

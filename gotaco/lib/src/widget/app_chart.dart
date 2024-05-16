@@ -138,7 +138,7 @@ class _AppLineChartState extends State<AppLineChart> {
   }
 
   LineChartData mainData() {
-    var showIndexes = [DateTime.now().hour];
+    var showIndexes = [widget.dataList.length - 1];
 
     var tooltipsOnBar = LineChartBarData(
       showingIndicators: showIndexes,

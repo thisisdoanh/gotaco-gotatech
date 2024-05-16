@@ -2,31 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:gotaco/src/util/app_constrant.dart';
-import 'package:gotaco/src/res/string/app_string.dart';
-import 'package:gotaco/src/ui/app/app_binding.dart';
-import 'package:gotaco/src/ui/router/app_page.dart';
-import 'package:gotaco/src/ui/router/app_router.dart';
-import 'package:gotaco/src/ui/theme/app_color.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:web_socket_channel/status.dart' as status;
+import 'package:gotaco/src/data/service/socket_service.dart';
 
-void main() async {
-  final wsUrl = Uri.parse('wss://echo.websocket.in');
-  final channel = WebSocketChannel.connect(wsUrl);
+import 'src/res/string/app_string.dart';
+import 'src/ui/app/app_binding.dart';
+import 'src/ui/router/app_page.dart';
+import 'src/ui/router/app_router.dart';
+import 'src/ui/theme/app_color.dart';
+import 'src/util/app_constrant.dart';
 
-  await channel.ready;
-
-  channel.stream.listen((message) {
-    channel.sink.add('received!');
-  });
+void main() {
+  SocketService.connectStompClient();
   runApp(
     ScreenUtilInit(
         designSize: const Size(375, 812),
         builder: (context, widget) {
           final data = MediaQuery.of(context);
           return MediaQuery(
-            data: data.copyWith(textScaleFactor: 1),
+            data: data.copyWith(textScaler: TextScaler.noScaling),
             child: GetMaterialApp(
               debugShowCheckedModeBanner: false,
               initialBinding: AppBinding(),

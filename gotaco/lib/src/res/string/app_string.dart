@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:gotaco/src/res/string/vi_strings.dart';
 
 import 'en_strings.dart';
-import 'vi_strings.dart';
 
 class AppString extends Translations {
   static const String localeCodeVi = 'vi_VN';
@@ -33,4 +32,5 @@ class StringConstants {
   static String welcome = "welcome";
   static String listMachine = "listMachine";
   static String notification = "notification";
+  static String errorActiveSocket = "errorActiveSocket";
 }

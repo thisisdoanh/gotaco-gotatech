@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gotaco/src/ui/app/app_controller.dart';
 import 'package:intl/intl.dart';
 
 class HomeController extends GetxController {
@@ -20,9 +21,13 @@ class HomeController extends GetxController {
   RxList listNotification = [].obs;
 
   RxInt selectedPage = 0.obs;
+  final AppController appController = Get.find<AppController>();
+
+  RxList<double> listDataCO = <double>[].obs;
 
   @override
   void onInit() {
+    listDataCO.value = [0, 0];
     percentCO.value = 20;
     percentWind.value = 2;
     temperature.value = 20;

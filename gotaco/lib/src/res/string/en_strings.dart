@@ -6,4 +6,5 @@ const enStrings = {
   "welcome": "Please wait a second!",
   "listMachine": "List machine",
   "notification": "Notification",
+  "errorActiveSocket": "Something went wrong when connect with socket",
 };
